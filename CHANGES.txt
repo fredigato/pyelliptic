@@ -1,3 +1,8 @@
+v1.5.8, 2017-05-04
+------------------
+
+- Added a dirty hack to use the library in systems with libcrypto 1.1 present (installing libcrypto 1.0.0 is needed).
+
 v1.5.7, 2015-08-31
 ------------------
 

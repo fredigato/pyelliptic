@@ -520,9 +520,12 @@ class _OpenSSL:
         return OpenSSL.ERR_error_string(OpenSSL.ERR_get_error(), None)
 
 libname = ctypes.util.find_library('crypto')
+if "1.1" in libname:
+    # HACK: Ugly hack to continue using the library while we port to cryptography
+    libname = "libcrypto.so.1.0.0"
 if libname is None:
     # For Windows ...
     libname = ctypes.util.find_library('libeay32.dll')
 if libname is None:
-    raise Exception("Couldn't load OpenSSL lib ...")
+    raise Exception("Couldn't find OpenSSL lib ...")
 OpenSSL = _OpenSSL(libname)
